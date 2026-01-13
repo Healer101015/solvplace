@@ -1,7 +1,7 @@
 import React from 'react';
 import WhatsAppButton from '../components/WhatsAppButton';
 
-// Componente auxiliar para ícones (SVG) para evitar repetição e garantir estilo uniforme
+// Componente auxiliar para ícones (SVG)
 const Icon = ({ path, className = "w-6 h-6" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -23,13 +23,24 @@ const Home = () => {
 
       {/* ================= HERO SECTION ================= */}
       <section className="relative text-white py-24 lg:py-32 px-4 overflow-hidden bg-slate-900">
-        {/* Background Premium */}
+
+        {/* === Background Animado (O Efeito Novo está Aqui) === */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#0f172a] to-[#1e3a8a] opacity-90"></div>
-          {/* Efeitos de Luz de Fundo (Blobs) */}
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2"></div>
-          {/* Textura sutil */}
+
+          {/* Blob Azul Superior (Acendendo e Apagando rápido - 4s) */}
+          <div
+            className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/40 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 animate-pulse"
+            style={{ animationDuration: '4s' }}
+          ></div>
+
+          {/* Blob Ciano Inferior (Acendendo e Apagando lento - 7s) */}
+          <div
+            className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[140px] translate-x-1/2 translate-y-1/2 animate-pulse"
+            style={{ animationDuration: '7s' }}
+          ></div>
+
+          {/* Textura para dar acabamento */}
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
         </div>
 
@@ -47,7 +58,7 @@ const Home = () => {
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
               Tecnologia parada <br /> é dinheiro perdido.
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-lg">
                 Nós resolvemos.
               </span>
             </h1>
@@ -269,13 +280,11 @@ const Home = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />} className="w-4 h-4" />
-                11 95292-4711(SP)
+                11 95292-4711 (SP)
               </li>
               <li className="flex items-center gap-2">
                 <Icon path={<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />} className="w-4 h-4" />
-                41 99239-0423(PR)
-              </li>
-              <li className="flex items-center gap-2">
+                41 99239-0423 (PR)
               </li>
             </ul>
           </div>

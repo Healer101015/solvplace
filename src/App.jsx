@@ -20,7 +20,7 @@ export default function App() {
         </main>
 
         {/* Footer fixo no final */}
-        <Footer />
+
       </div>
     </Router>
   );

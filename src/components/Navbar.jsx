@@ -1,32 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+// Importa a imagem da pasta assets. 
+// Certifique-se de que o arquivo solv.png está em src/assets/
+import SolvLogo from '../assets/solv.png';
 
-export default function Navbar() {
+const Navbar = () => {
   return (
-    <nav className="bg-brand-navy text-white shadow-md">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo / Nome da Marca */}
-        <Link to="/" className="text-2xl font-bold tracking-tight">
-          ICMS<span className="text-brand-green">Trade</span>
-        </Link>
+    <nav className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-gray-100 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
 
-        {/* Links de Navegação */}
-        <div className="hidden md:flex space-x-8 items-center">
-          <Link to="/" className="hover:text-brand-green transition-colors">Início</Link>
-          <Link to="/marketplace" className="hover:text-brand-green transition-colors">Oportunidades</Link>
-          <Link to="/about" className="hover:text-brand-green transition-colors">Como Funciona</Link>
-        </div>
+          {/* LADO ESQUERDO: LOGO */}
+          <div className="flex items-center">
+            <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
+              {/* LOGO IMAGEM */}
+              <img
+                src={SolvLogo}
+                alt="Solvplace Logo"
+                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
 
-        {/* Botões de Ação */}
-        <div className="flex space-x-4">
-          <Link to="/login" className="text-sm font-medium hover:text-brand-green py-2 px-3">
-            Entrar
-          </Link>
-          <Link to="/register" className="bg-brand-green hover:bg-emerald-600 text-white text-sm font-bold py-2 px-4 rounded transition-colors">
-            Abrir Conta
-          </Link>
+              {/* NOME DA EMPRESA (Opcional: Se a logo já tiver o nome escrito, remova o <span> abaixo) */}
+              <span className="font-extrabold text-2xl tracking-tighter text-slate-900 group-hover:text-blue-600 transition-colors">
+                SOLVPLACE
+              </span>
+            </Link>
+          </div>
+
+          {/* LADO DIREITO: LINKS E BOTÃO */}
+          <div className="hidden md:flex items-center space-x-6">
+            <Link to="/" className="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md font-semibold transition-colors">
+              Início
+            </Link>
+            <Link to="/#servicos" className="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md font-semibold transition-colors">
+              Serviços
+            </Link>
+
+            {/* Botão de Contato Estilizado */}
+            <a
+              href="https://wa.me/5511952924711"
+              className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" /></svg>
+              Contato
+            </a>
+          </div>
         </div>
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

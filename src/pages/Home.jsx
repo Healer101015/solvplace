@@ -1,265 +1,291 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import WhatsAppButton from '../components/WhatsAppButton';
+
+// Componente auxiliar para ícones (SVG) para evitar repetição e garantir estilo uniforme
+const Icon = ({ path, className = "w-6 h-6" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {path}
+  </svg>
+);
 
 const Home = () => {
   return (
-    <div className="font-sans text-slate-700 bg-gray-50 min-h-screen flex flex-col">
+    <div className="font-sans text-slate-600 bg-[#F8FAFC] min-h-screen flex flex-col">
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative text-white py-24 lg:py-32 px-4 overflow-hidden">
-        {/* Background Image com Overlay Escuro */}
+      <section className="relative text-white py-24 lg:py-32 px-4 overflow-hidden bg-slate-900">
+        {/* Background Premium */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1597424214711-2d7c0f135e02?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-            alt="Background Tech"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 opacity-95"></div>
-          {/* Efeito de grade decorativa */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#0f172a] to-[#1e3a8a] opacity-90"></div>
+          {/* Efeitos de Luz de Fundo (Blobs) */}
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2"></div>
+          {/* Textura sutil */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16">
 
           {/* Texto Principal */}
-          <div className="flex-1 text-center md:text-left space-y-8 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          <div className="flex-1 text-center lg:text-left space-y-8">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-cyan-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider backdrop-blur-md shadow-lg">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
               Assistência Técnica Delivery
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
-              Seu eletrônico novo de novo,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                sem você sair de casa.
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
+              Tecnologia parada <br /> é dinheiro perdido.
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                Nós resolvemos.
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl font-light leading-relaxed mx-auto md:mx-0">
-              A <strong>SOLVPLACE</strong> resolve falhas em celulares, notebooks e games com rapidez, honestidade e frete grátis*. A confiança que você precisa com a comodidade que você merece.
+            <p className="text-lg md:text-xl text-slate-300 max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+              A <strong>SOLVPLACE</strong> busca, conserta e devolve seu eletrônico. Sem trânsito, sem filas e com garantia de quem entende do assunto.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
               <a
                 href="https://wa.me/5511952924711"
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full shadow-lg shadow-green-500/30 transform transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center justify-center gap-3 text-lg"
+                className="group bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-xl shadow-xl shadow-blue-600/20 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3 text-lg border border-blue-500/50"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.68-1.761-1.256-2.007-.248-.106-1.124-.13-1.666.071-.433.16-1.558 1.488-1.558 2.262 0 .618 2.502 4.144 5.356 4.484.58.069 1.157.067 1.838-.112.432-.113 1.144-.45 1.751-1.258.113-.151.108-.433.029-.582-.074-.14-.523-1.63-.642-1.914-.118-.284-.298-.431-.569-.431-.222 0-.441.01-.617.02-.182.01-.424.088-.666.371-.242.282-1.003 1.014-1.003 2.476 0 1.463 1.063 2.876 1.211 3.075.149.199 2.095 3.2 5.074 4.485.708.306 1.261.489 1.693.625.711.227 1.359.195 1.87.118.571-.085 1.757-.719 2.005-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" /></svg>
-                <span>Orçamento Gratuito</span>
+                <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />} />
+                <span>Orçamento via WhatsApp</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
-              <p className="hidden sm:flex items-center text-xs text-blue-200 gap-1">
-                <span className="bg-blue-500 rounded-full p-1">✓</span> Resposta Rápida
-              </p>
+              <div className="flex items-center justify-center gap-4 text-sm text-slate-400">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map(i => (
+                    <div key={i} className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-900 flex items-center justify-center text-xs">👤</div>
+                  ))}
+                </div>
+                <p>+1000 clientes <br /> atendidos</p>
+              </div>
             </div>
           </div>
 
-          {/* Cards Flutuantes (Visual Tech) */}
-          <div className="flex-1 hidden md:flex justify-center relative">
-            {/* Círculo decorativo de fundo */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600 rounded-full filter blur-[100px] opacity-20 animate-pulse"></div>
-
-            <div className="relative z-10 grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-2xl flex flex-col items-center transform translate-y-8 animate-float-slow">
-                <span className="text-4xl mb-2">🍎</span>
-                <span className="text-white font-bold">Apple Expert</span>
-                <span className="text-xs text-blue-200">iPhone & MacBook</span>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-2xl flex flex-col items-center animate-float-delayed">
-                <span className="text-4xl mb-2">💻</span>
-                <span className="text-white font-bold">Notebooks</span>
-                <span className="text-xs text-blue-200">Hardware & Software</span>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-2xl flex flex-col items-center transform translate-y-8 animate-float-slow">
-                <span className="text-4xl mb-2">🎮</span>
-                <span className="text-white font-bold">Consoles</span>
-                <span className="text-xs text-blue-200">Manutenção & Limpeza</span>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-2xl flex flex-col items-center animate-float-delayed">
-                <span className="text-4xl mb-2">⚡</span>
-                <span className="text-white font-bold">Rápido</span>
-                <span className="text-xs text-blue-200">Diagnóstico Ágil</span>
-              </div>
+          {/* Visual Tech Abstrato (Cards Flutuantes) */}
+          <div className="flex-1 relative w-full max-w-lg lg:max-w-none">
+            <div className="relative z-10 grid grid-cols-2 gap-4 lg:gap-6">
+              {[
+                { title: "Apple Expert", sub: "Especialistas em iPhone e Mac", icon: <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z M10 2c1 .5 2 2 2 5" />, color: "text-white" },
+                { title: "Notebooks", sub: "Troca de Tela, SSD e Bateria", icon: <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" />, color: "text-blue-300" },
+                { title: "Consoles", sub: "Limpeza e Reparo de Placa", icon: <path d="M6 12h2v3a3 3 0 0 0 6 0v-3h2M6 12a6 6 0 0 1 12 0M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />, color: "text-purple-300" },
+                { title: "Garantia", sub: "Segurança total no serviço", icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />, color: "text-green-300" },
+              ].map((card, idx) => (
+                <div key={idx} className={`bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-2xl flex flex-col justify-between h-40 transform transition hover:scale-105 hover:bg-white/10 group ${idx % 2 !== 0 ? 'translate-y-8' : ''}`}>
+                  <div className={`p-3 bg-gradient-to-br from-white/10 to-transparent w-fit rounded-lg ${card.color}`}>
+                    <Icon path={card.icon} className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg">{card.title}</h3>
+                    <p className="text-slate-400 text-xs mt-1 leading-tight">{card.sub}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ================= FEATURES (Checklist) ================= */}
-      <section className="bg-white -mt-10 relative z-20 mx-4 md:mx-auto max-w-5xl rounded-xl shadow-xl border border-gray-100 p-8 flex flex-col md:flex-row justify-around items-center gap-6">
-        <div className="flex items-center gap-3">
-          <div className="bg-blue-100 p-2 rounded-full text-blue-600">🛡️</div>
-          <div>
-            <h3 className="font-bold text-slate-800">Garantia Total</h3>
-            <p className="text-sm text-slate-500">3 meses em todos serviços</p>
-          </div>
-        </div>
-        <div className="w-full md:w-px h-px md:h-12 bg-gray-200"></div>
-        <div className="flex items-center gap-3">
-          <div className="bg-blue-100 p-2 rounded-full text-blue-600">🚚</div>
-          <div>
-            <h3 className="font-bold text-slate-800">Delivery Grátis</h3>
-            <p className="text-sm text-slate-500">Buscamos e levamos*</p>
-          </div>
-        </div>
-        <div className="w-full md:w-px h-px md:h-12 bg-gray-200"></div>
-        <div className="flex items-center gap-3">
-          <div className="bg-blue-100 p-2 rounded-full text-blue-600">💳</div>
-          <div>
-            <h3 className="font-bold text-slate-800">Pagamento Flexível</h3>
-            <p className="text-sm text-slate-500">Cartão, Pix e Dinheiro</p>
-          </div>
+      {/* ================= FEATURES BAR ================= */}
+      <section className="relative z-20 px-4 -mt-10 mb-10">
+        <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+          {[
+            {
+              title: "Garantia de 90 Dias",
+              desc: "Qualidade assegurada em peças e mão de obra.",
+              icon: <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            },
+            {
+              title: "Delivery Seguro",
+              desc: "Logística própria para retirada e entrega.",
+              icon: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            },
+            {
+              title: "Orçamento Honesto",
+              desc: "Sem taxas surpresas. Você aprova antes.",
+              icon: <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            }
+          ].map((feat, idx) => (
+            <div key={idx} className="flex items-start gap-4 flex-1">
+              <div className="p-3 rounded-xl bg-blue-50 text-blue-600 shadow-sm">
+                <Icon path={feat.icon} />
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-800 text-lg">{feat.title}</h3>
+                <p className="text-slate-500 text-sm mt-1">{feat.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ================= COMO FUNCIONA (Passo a Passo) ================= */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-12">Como funciona o <span className="text-blue-600">Delivery</span>?</h2>
+      {/* ================= COMO FUNCIONA ================= */}
+      <section className="py-20 px-4 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Seu aparelho novo em <span className="text-blue-600">4 passos</span></h2>
+            <p className="text-slate-500 mt-4">Simples, rápido e sem dor de cabeça.</p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            {/* Linha conectora (visível apenas desktop) */}
-            <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-1 bg-gray-200 -z-0"></div>
+            {/* Linha tracejada conectora */}
+            <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 border-t-2 border-dashed border-slate-200 z-0"></div>
 
             {[
-              { step: "1", title: "Você chama", desc: "Entre em contato pelo WhatsApp e conte o problema.", icon: "💬" },
-              { step: "2", title: "A gente busca", desc: "Vamos até seu endereço retirar o aparelho.", icon: "🛵" },
-              { step: "3", title: "Consertamos", desc: "Diagnóstico e reparo aprovado por você.", icon: "🔧" },
-              { step: "4", title: "Devolvemos", desc: "Seu aparelho novo de novo em suas mãos.", icon: "✨" },
-            ].map((item, idx) => (
-              <div key={idx} className="relative z-10 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div className="w-16 h-16 bg-blue-600 text-white rounded-2xl text-2xl font-bold flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-600/20 transform -rotate-3">
-                  {item.icon}
+              { title: "Contato", desc: "Você nos chama no WhatsApp e descreve o problema.", icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /> },
+              { title: "Busca", desc: "Retiramos o aparelho no conforto da sua casa.", icon: <path d="M14 16l4-4-4-4M5 8v8a2 2 0 0 0 2 2h7" /> },
+              { title: "Reparo", desc: "Técnicos certificados realizam o serviço.", icon: <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /> },
+              { title: "Entrega", desc: "Devolvemos seu aparelho pronto para uso.", icon: <path d="M20 6L9 17l-5-5" /> },
+            ].map((step, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center text-center group">
+                <div className="w-20 h-20 bg-white rounded-2xl shadow-lg border border-slate-100 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                  <Icon path={step.icon} className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">
-                  {item.step}
-                </div>
+                <span className="absolute top-0 right-10 bg-slate-900 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">
+                  {idx + 1}
+                </span>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">{step.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed px-2">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= SERVIÇOS ================= */}
-      <section id="servicos" className="py-20 px-4 bg-white relative overflow-hidden">
-        {/* Elemento decorativo */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50 -z-0"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50 -z-0"></div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm">Nossas Especialidades</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Tudo o que consertamos</h2>
+      {/* ================= SERVIÇOS (Icons High End) ================= */}
+      <section id="servicos" className="py-24 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+              <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">O que consertamos</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Nossas Especialidades</h2>
+            </div>
+            <a href="https://wa.me/5511952924711" className="text-blue-600 font-semibold hover:underline flex items-center gap-2">
+              Ver lista completa <span className="text-lg">→</span>
+            </a>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { icon: "📱", name: "Celulares", detail: "Telas, Baterias & Software" },
-              { icon: "📟", name: "Tablets", detail: "iPad & Samsung Tab" },
-              { icon: "💻", name: "Notebooks", detail: "Upgrade SSD & Reparos" },
-              { icon: "🍏", name: "MacBooks", detail: "Especialista Apple" },
-              { icon: "🎮", name: "Videogames", detail: "Playstation & Xbox" },
-            ].map((item, index) => (
-              <div key={index} className="group p-6 bg-white rounded-2xl hover:bg-blue-600 transition-all duration-300 border border-gray-100 hover:border-transparent hover:shadow-xl hover:shadow-blue-600/20 text-center cursor-default">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">{item.icon}</div>
-                <h3 className="font-bold text-slate-800 group-hover:text-white text-lg">{item.name}</h3>
-                <p className="text-xs text-slate-400 mt-2 group-hover:text-blue-100">{item.detail}</p>
+              { name: "Celulares", sub: "Troca de vidro e bateria", icon: <path d="M12 18h.01M5 17a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5z" /> },
+              { name: "Tablets", sub: "Sistemas e Hardware", icon: <path d="M12 18h.01M4 6h16M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z" /> },
+              { name: "Notebooks", sub: "Lentidão e formatação", icon: <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" /> },
+              { name: "Apple", sub: "Especialista Certificado", icon: <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z M10 2c1 .5 2 2 2 5" /> },
+              { name: "Games", sub: "Manutenção Preventiva", icon: <path d="M6 12h2v3a3 3 0 0 0 6 0v-3h2M6 12a6 6 0 0 1 12 0M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> },
+            ].map((item, idx) => (
+              <div key={idx} className="group relative bg-slate-50 rounded-2xl p-8 transition-all duration-300 hover:bg-blue-600 hover:shadow-2xl hover:-translate-y-2 border border-slate-100 overflow-hidden">
+                {/* Círculo decorativo no hover */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+
+                <div className="relative z-10 text-slate-400 group-hover:text-white mb-4 transition-colors">
+                  <Icon path={item.icon} className="w-10 h-10" />
+                </div>
+                <h3 className="relative z-10 font-bold text-slate-800 text-xl group-hover:text-white mb-1 transition-colors">{item.name}</h3>
+                <p className="relative z-10 text-xs text-slate-500 group-hover:text-blue-100 transition-colors">{item.sub}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= PROBLEMAS COMUNS (CTA) ================= */}
-      <section className="py-20 px-4 bg-slate-900 text-white relative">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      {/* ================= CALL TO ACTION (Footer Pre) ================= */}
+      <section className="py-20 px-4 bg-slate-900 relative overflow-hidden">
+        {/* Grid de fundo */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-500 opacity-20 blur-[100px]"></div>
 
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Seu aparelho está pedindo socorro?</h2>
-          <p className="text-xl text-slate-300 mb-10 max-w-3xl mx-auto">
-            Tela quebrada? Bateria viciada? Não liga? <br className="hidden md:block" />
-            Não deixe para depois. O conserto pode ser mais simples e barato do que comprar um novo.
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight">
+            Não deixe para depois.<br />
+            Conserte hoje.
+          </h2>
+          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+            Economize até <strong>60%</strong> consertando seu aparelho ao invés de comprar um novo. Diagnóstico rápido e transparente.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 text-left mb-12">
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
-              <div className="text-blue-400 font-bold text-lg mb-2 flex items-center gap-2">
-                <span className="text-2xl">🔍</span> Diagnóstico Honesto
-              </div>
-              <p className="text-slate-400 text-sm">Sem invenção de problemas. Explicamos tudo de forma clara antes de começar.</p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
-              <div className="text-blue-400 font-bold text-lg mb-2 flex items-center gap-2">
-                <span className="text-2xl">👨‍🔧</span> Peças de Qualidade
-              </div>
-              <p className="text-slate-400 text-sm">Usamos componentes premium para garantir durabilidade e performance.</p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
-              <div className="text-blue-400 font-bold text-lg mb-2 flex items-center gap-2">
-                <span className="text-2xl">🚀</span> Rapidez
-              </div>
-              <p className="text-slate-400 text-sm">Sabemos que você não pode ficar desconectado. Agilidade é nossa meta.</p>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://wa.me/5511952924711"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />} className="w-5 h-5" />
+              Falar com Técnico
+            </a>
+            <a
+              href="#servicos"
+              className="bg-white/10 hover:bg-white/20 text-white font-semibold py-4 px-10 rounded-full backdrop-blur-sm border border-white/10 transition"
+            >
+              Ver Serviços
+            </a>
           </div>
-
-          <a
-            href="https://wa.me/5511952924711"
-            className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:scale-105"
-          >
-            Quero um orçamento agora
-          </a>
         </div>
       </section>
 
       {/* ================= FOOTER ================= */}
-      <footer className="bg-slate-950 text-slate-400 py-16 px-4 border-t border-slate-900">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
+      <footer className="bg-slate-950 text-slate-400 pt-16 pb-8 px-4 border-t border-slate-900">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 text-sm">
 
-          {/* Marca */}
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-4">SOLVPLACE</h2>
-            <p className="text-sm leading-relaxed mb-6">
-              Assistência técnica especializada com foco na comodidade do cliente.
-              Confiança que resolve. Qualidade que permanece.
+          <div className="col-span-1 md:col-span-1">
+            <h2 className="text-2xl font-bold text-white mb-4 tracking-tighter">SOLVPLACE</h2>
+            <p className="leading-relaxed mb-6">
+              Sua parceira de confiança para assistência técnica delivery. Rapidez, honestidade e qualidade.
             </p>
-            <div className="flex justify-center md:justify-start gap-4">
-              {/* Placeholders para redes sociais */}
-              <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition cursor-pointer">📸</div>
-              <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition cursor-pointer">📘</div>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+                <Icon path={<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />} className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+                <Icon path={<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01M16 2H8a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5z" />} className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          {/* Contato */}
           <div>
-            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Contato</h3>
+            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-xs">Serviços</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:text-blue-400 transition">Troca de Tela</a></li>
+              <li><a href="#" className="hover:text-blue-400 transition">Troca de Bateria</a></li>
+              <li><a href="#" className="hover:text-blue-400 transition">Formatação</a></li>
+              <li><a href="#" className="hover:text-blue-400 transition">Limpeza de Console</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-xs">Contato</h3>
             <ul className="space-y-3">
-              <li className="flex items-center justify-center md:justify-start gap-2 hover:text-white transition">
-                <span>📞</span> 11 95292-4711 (SP)
+              <li className="flex items-center gap-2">
+                <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />} className="w-4 h-4" />
+                11 95292-4711(SP)
               </li>
-              <li className="flex items-center justify-center md:justify-start gap-2 hover:text-white transition">
-                <span>📞</span> 41 99762-4067 (PR)
+              <li className="flex items-center gap-2">
+                <Icon path={<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />} className="w-4 h-4" />
+                41 99239-0423(PR)
               </li>
-              <li className="flex items-center justify-center md:justify-start gap-2 hover:text-white transition">
-                <span>📧</span> contato@solvplace.com.br
-              </li>
-              <li className="flex items-center justify-center md:justify-start gap-2 text-green-400">
-                <span>●</span> Atendendo agora
+              <li className="flex items-center gap-2">
               </li>
             </ul>
           </div>
 
-          {/* Links Rápidos / Info */}
           <div>
-            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Informações</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-blue-400 transition">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Termos de Serviço</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Garantia</a></li>
-              <li className="pt-4 text-xs text-slate-600">
-                *Frete grátis sujeito a análise de região e valor do serviço.
-              </li>
+            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-xs">Legal</h3>
+            <ul className="space-y-2 text-xs text-slate-500">
+              <li><a href="#" className="hover:text-white transition">Privacidade</a></li>
+              <li><a href="#" className="hover:text-white transition">Termos de Uso</a></li>
+              <li className="pt-2">*Frete grátis sujeito a raio de distância e valor mínimo. Consulte.</li>
             </ul>
           </div>
         </div>

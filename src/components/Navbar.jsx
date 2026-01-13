@@ -29,12 +29,8 @@ const Navbar = () => {
 
           {/* LADO DIREITO: LINKS E BOTÃO */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md font-semibold transition-colors">
-              Início
-            </Link>
-            <Link to="/#servicos" className="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md font-semibold transition-colors">
-              Serviços
-            </Link>
+
+
 
             {/* Botão de Contato Estilizado */}
             <a

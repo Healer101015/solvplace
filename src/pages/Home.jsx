@@ -248,11 +248,11 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- BOTÃO WHATSAPP FLUTUANTE COM DESTAQUE "CONSULTE DIRETAMENTE COM O TÉCNICO" --- */}
+      {/* --- BOTÃO WHATSAPP FLUTUANTE COM DESTAQUE "CONSULTE COM O TÉCNICO" --- */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 animate-fade-in-up">
-        {/* Balão de Texto */}
-        <div className="bg-white text-slate-800 px-4 py-2 rounded-xl shadow-lg border border-slate-100 hidden md:block animate-bounce-slow origin-right relative">
-          <span className="font-bold text-sm">Consulte diretamente com o técnico</span>
+        {/* Balão de Texto (Agora visível em mobile também) */}
+        <div className="bg-white text-slate-800 px-4 py-2 rounded-xl shadow-lg border border-slate-100 animate-bounce-slow origin-right relative">
+          <span className="font-bold text-sm">Consulte com o técnico</span>
           {/* Seta do balão */}
           <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-l-8 border-l-white border-b-8 border-b-transparent"></div>
         </div>

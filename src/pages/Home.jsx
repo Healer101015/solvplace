@@ -1,9 +1,8 @@
-// src/pages/Home.jsx
 import React, { useState } from 'react';
 import WhatsAppButton from '../components/WhatsAppButton';
-import Footer from '../components/Footer'; // Se você usar, se não, pode remover
 import Icon from '../components/Icon';
-import HeroSection from '../components/HeroSection'; // <--- IMPORTAÇÃO NOVA
+import HeroSection from '../components/HeroSection';
+import SpecialtiesSection from '../components/SpecialtiesSection'; // <--- IMPORTAÇÃO NOVA
 
 // Importando as imagens
 import iphoneImg from '../assets/iphone.png';
@@ -47,7 +46,6 @@ const Home = () => {
       url: window.location.href,
     };
 
-    // Tenta usar o compartilhamento nativo do celular (Android/iOS)
     if (navigator.share) {
       try {
         await navigator.share(shareData);
@@ -55,7 +53,6 @@ const Home = () => {
         console.log('Erro ao compartilhar:', err);
       }
     } else {
-      // Se for PC ou não suportar, abre o modal customizado
       setShowShareModal(true);
     }
   };
@@ -69,7 +66,7 @@ const Home = () => {
   return (
     <div className="font-sans text-slate-600 bg-[#F8FAFC] min-h-screen flex flex-col relative">
 
-      {/* MODAL DE COMPARTILHAMENTO (Apenas aparece se navigator.share falhar) */}
+      {/* MODAL DE COMPARTILHAMENTO */}
       {showShareModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm relative">
@@ -81,39 +78,15 @@ const Home = () => {
             </button>
             <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Compartilhar SOLVPLACE</h3>
             <div className="grid grid-cols-2 gap-3">
-              <a
-                href={`https://api.whatsapp.com/send?text=${encodeURIComponent("Olha essa assistência técnica: " + window.location.href)}`}
-                target="_blank" rel="noreferrer"
-                className="flex items-center justify-center gap-2 p-3 bg-green-100 text-green-700 rounded-xl hover:bg-green-200 transition font-bold"
-              >
-                WhatsApp
-              </a>
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
-                target="_blank" rel="noreferrer"
-                className="flex items-center justify-center gap-2 p-3 bg-blue-100 text-blue-700 rounded-xl hover:bg-blue-200 transition font-bold"
-              >
-                Facebook
-              </a>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent("Na hora do problema, escolha quem cuida de verdade.")}`}
-                target="_blank" rel="noreferrer"
-                className="flex items-center justify-center gap-2 p-3 bg-slate-100 text-slate-700 rounded-xl hover:bg-slate-200 transition font-bold"
-              >
-                X (Twitter)
-              </a>
-              <button
-                onClick={copyToClipboard}
-                className="flex items-center justify-center gap-2 p-3 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition font-bold"
-              >
-                Copiar Link
-              </button>
+              <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent("Olha essa assistência técnica: " + window.location.href)}`} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 p-3 bg-green-100 text-green-700 rounded-xl hover:bg-green-200 transition font-bold">WhatsApp</a>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 p-3 bg-blue-100 text-blue-700 rounded-xl hover:bg-blue-200 transition font-bold">Facebook</a>
+              <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent("Na hora do problema, escolha quem cuida de verdade.")}`} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 p-3 bg-slate-100 text-slate-700 rounded-xl hover:bg-slate-200 transition font-bold">X (Twitter)</a>
+              <button onClick={copyToClipboard} className="flex items-center justify-center gap-2 p-3 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition font-bold">Copiar Link</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* ESTILOS DE ANIMAÇÃO LOCAIS (Mantidos aqui pois são usados na seção de imagens flutuantes abaixo do Hero) */}
       <style>{`
         @keyframes float-slow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         @keyframes float-medium { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
@@ -121,10 +94,10 @@ const Home = () => {
         .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
       `}</style>
 
-      {/* ================= HERO SECTION (NOVO COMPONENTE) ================= */}
+      {/* HERO SECTION */}
       <HeroSection onShareClick={handleShare} />
 
-      {/* ================= FEATURES BAR ================= */}
+      {/* FEATURES BAR */}
       <section className="relative z-20 px-4 -mt-10 mb-20">
         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
           {[
@@ -140,11 +113,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= TEXTO DESTAQUE E IMAGENS ================= */}
+      {/* TEXTO DESTAQUE */}
       <section className="py-10 pb-24 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24">
-
-          {/* LADO ESQUERDO: IMAGENS FLUTUANTES */}
           <div className="flex-1 w-full relative min-h-[400px] flex items-center justify-center">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-blue-100/50 to-cyan-100/50 rounded-full blur-3xl -z-10"></div>
             <div className="relative w-full max-w-[550px]">
@@ -160,34 +131,16 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          {/* LADO DIREITO: TEXTO E PROPOSTA DE VALOR */}
           <div className="flex-1 space-y-6">
             <span className="text-blue-600 font-bold uppercase tracking-wider text-sm flex items-center gap-2">
               <span className="w-8 h-[2px] bg-blue-600"></span>
               SOLVPLACE
             </span>
-
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
-              Tecnologia parada <br />
-              <span className="text-blue-600">é dinheiro perdido.</span>
-            </h2>
-
-            <p className="text-lg text-slate-600 leading-relaxed">
-              A <strong>SOLVPLACE</strong> oferece assistência técnica especializada com honestidade, rapidez e segurança — tudo sem você sair de casa.
-            </p>
-
-            <p className="text-base text-slate-500 leading-relaxed">
-              Se seu eletrônico está travando, esquentando, não ligando ou apresentando qualquer falha, fale com a gente. Muitas vezes o conserto é simples e evita que você perca tempo e dinheiro. Com diagnóstico claro, reparo profissional e garantia, buscamos, consertamos e devolvemos direto no seu endereço.
-            </p>
-
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">Tecnologia parada <br /><span className="text-blue-600">é dinheiro perdido.</span></h2>
+            <p className="text-lg text-slate-600 leading-relaxed">A <strong>SOLVPLACE</strong> oferece assistência técnica especializada com honestidade, rapidez e segurança.</p>
+            <p className="text-base text-slate-500 leading-relaxed">Se seu eletrônico está travando, esquentando ou não ligando, fale com a gente. Buscamos e entregamos no seu endereço.</p>
             <div className="grid grid-cols-2 gap-4 pt-4">
-              {[
-                "Diagnóstico Claro",
-                "Reparo Profissional",
-                "Economize até 60%",
-                "Garantia Inclusa",
-              ].map((item, i) => (
+              {["Diagnóstico Claro", "Reparo Profissional", "Economize até 60%", "Garantia Inclusa"].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs shrink-0">✓</div>
                   <span className="text-slate-700 font-medium text-sm">{item}</span>
@@ -195,43 +148,13 @@ const Home = () => {
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* ================= LISTA DE SERVIÇOS (Grelha) ================= */}
-      <section id="servicos" className="py-24 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">O que consertamos</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Nossas Especialidades</h2>
-            <p className="text-slate-500 mt-3 max-w-2xl mx-auto">Especializados na linha Apple e Androids.</p>
-          </div>
+      {/* ================= COMPONENTE DE ESPECIALIDADES (NOVO) ================= */}
+      <SpecialtiesSection />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[
-              { name: "Celulares", sub: "Troca de tela e Bateria", icon: <path d="M12 18h.01M5 17a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5z" /> },
-              { name: "Tablets e iPads", sub: "Vidro e Componentes", icon: <path d="M12 18h.01M4 6h16M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z" /> },
-              { name: "Notebooks", sub: "Teclado, Carcaça, Placa", icon: <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" /> },
-              { name: "MacBooks", sub: "Especialistas Apple", icon: <path d="M2 20h20M4 4h16v12H4z" /> },
-              { name: "Videogames", sub: "Consoles de Mesa", icon: <path d="M6 12h2v3a3 3 0 0 0 6 0v-3h2M6 12a6 6 0 0 1 12 0M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> },
-              { name: "Controles", sub: "Manutenção de Joysticks", icon: <path d="M12 2a10 10 0 0 0-9.5 13.5l-2 2 2 2 2-2A10 10 0 1 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-3-8h6" /> },
-              { name: "Portáteis", sub: "Switch, Steam Deck, etc", icon: <path d="M16 6h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4M8 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4M12 8v8" /> },
-              { name: "Limpeza & Software", sub: "Reiniciando, Lento, etc", icon: <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /> },
-            ].map((item, idx) => (
-              <div key={idx} className="group relative bg-slate-50 rounded-2xl p-6 transition-all duration-300 hover:bg-blue-600 hover:shadow-2xl hover:-translate-y-2 border border-slate-100 overflow-hidden flex flex-col items-center text-center">
-                <div className="mb-4 text-blue-600 group-hover:text-white transition-colors">
-                  <Icon path={item.icon} className="w-10 h-10" />
-                </div>
-                <h3 className="relative z-10 font-bold text-slate-800 text-lg group-hover:text-white mb-1 transition-colors">{item.name}</h3>
-                <p className="relative z-10 text-xs text-slate-500 group-hover:text-blue-100 transition-colors">{item.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= COMO FUNCIONA (Passos) ================= */}
+      {/* COMO FUNCIONA */}
       <section className="py-20 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -259,64 +182,29 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= FORMULÁRIO DE ORÇAMENTO ================= */}
+      {/* FORMULÁRIO */}
       <section id="orcamento-form" className="py-20 px-4 bg-white relative">
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-slate-50 to-white border border-slate-200 shadow-2xl rounded-3xl p-8 md:p-12">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-slate-900">Inicie seu atendimento</h2>
             <p className="text-slate-500 mt-2">Preencha os dados e fale com um técnico agora mesmo.</p>
           </div>
-
           <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Nome */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-slate-700">Seu Nome</label>
-                <input
-                  type="text"
-                  name="nome"
-                  required
-                  placeholder="Ex: João Silva"
-                  value={formData.nome}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white"
-                />
+                <input type="text" name="nome" required placeholder="Ex: João Silva" value={formData.nome} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white" />
               </div>
-
-              {/* Aparelho */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-slate-700">Aparelho / Modelo</label>
-                <input
-                  type="text"
-                  name="aparelho"
-                  required
-                  placeholder="Ex: iPhone 11, Notebook Dell..."
-                  value={formData.aparelho}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white"
-                />
+                <input type="text" name="aparelho" required placeholder="Ex: iPhone 11, Notebook Dell..." value={formData.aparelho} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white" />
               </div>
             </div>
-
-            {/* Problema */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-slate-700">O que está acontecendo?</label>
-              <textarea
-                name="problema"
-                required
-                placeholder="Ex: A tela quebrou, não carrega, precisa de limpeza, controle falhando..."
-                rows="4"
-                value={formData.problema}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white resize-none"
-              ></textarea>
+              <textarea name="problema" required placeholder="Ex: A tela quebrou, não carrega, precisa de limpeza..." rows="4" value={formData.problema} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white resize-none"></textarea>
             </div>
-
-            {/* Botão Enviar */}
-            <button
-              type="submit"
-              className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow-lg shadow-green-500/30 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 text-lg"
-            >
+            <button type="submit" className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow-lg shadow-green-500/30 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 text-lg">
               <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />} />
               Solicitar Orçamento via WhatsApp
             </button>
@@ -325,29 +213,18 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= CALL TO ACTION (Slogan Final) ================= */}
+      {/* FOOTER CALL */}
       <section className="py-20 px-4 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-500 opacity-20 blur-[100px]"></div>
-
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <img
-                src={solvBLogo}
-                alt="SOLVPLACE"
-                className="h-10 md:h-14 w-auto object-contain"
-              />
-              <span className="text-2xl md:text-4xl font-bold text-white"></span>
+              <img src={solvBLogo} alt="SOLVPLACE" className="h-10 md:h-14 w-auto object-contain" />
             </div>
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-              Confiança que resolve.<br />
-              <span className="text-blue-400">Qualidade que permanece.</span>
-            </h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">Confiança que resolve.<br /><span className="text-blue-400">Qualidade que permanece.</span></h2>
           </div>
-          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
-            Não deixe seu equipamento parado. Recupere a performance hoje mesmo.
-          </p>
+          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">Não deixe seu equipamento parado. Recupere a performance hoje mesmo.</p>
         </div>
       </section>
 

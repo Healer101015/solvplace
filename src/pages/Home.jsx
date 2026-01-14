@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Icon from '../components/Icon';
 import HeroSection from '../components/HeroSection';
-import SpecialtiesSection from '../components/SpecialtiesSection'; // <--- IMPORTAÇÃO NOVA
+import SpecialtiesSection from '../components/SpecialtiesSection';
 
 // Importando as imagens
 import iphoneImg from '../assets/iphone.png';
@@ -87,11 +87,31 @@ const Home = () => {
         </div>
       )}
 
+      {/* ESTILOS DE ANIMAÇÃO LOCAIS */}
       <style>{`
         @keyframes float-slow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         @keyframes float-medium { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
         .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
         .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
+        
+        /* Animações do Botão WhatsApp */
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite ease-in-out;
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out forwards;
+            animation-delay: 2s; /* Aparece depois de 2 segundos */
+            opacity: 0; /* Começa invisível para rodar a animação */
+            animation-fill-mode: forwards;
+        }
       `}</style>
 
       {/* HERO SECTION */}
@@ -151,7 +171,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= COMPONENTE DE ESPECIALIDADES (NOVO) ================= */}
+      {/* COMPONENTE DE ESPECIALIDADES */}
       <SpecialtiesSection />
 
       {/* COMO FUNCIONA */}
@@ -228,7 +248,26 @@ const Home = () => {
         </div>
       </section>
 
-      <WhatsAppButton />
+      {/* --- BOTÃO WHATSAPP FLUTUANTE COM DESTAQUE "CONSULTE DIRETAMENTE COM O TÉCNICO" --- */}
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 animate-fade-in-up">
+        {/* Balão de Texto */}
+        <div className="bg-white text-slate-800 px-4 py-2 rounded-xl shadow-lg border border-slate-100 hidden md:block animate-bounce-slow origin-right relative">
+          <span className="font-bold text-sm">Consulte diretamente com o técnico</span>
+          {/* Seta do balão */}
+          <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-l-8 border-l-white border-b-8 border-b-transparent"></div>
+        </div>
+
+        {/* Botão Pulsante */}
+        <div className="relative group">
+          {/* Círculo de pulso (ping) */}
+          <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
+          {/* Componente do Botão */}
+          <div className="relative transition-transform duration-300 transform group-hover:scale-110">
+            <WhatsAppButton />
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

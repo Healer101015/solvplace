@@ -1,14 +1,14 @@
 // src/pages/Home.jsx
 import React, { useState } from 'react';
 import WhatsAppButton from '../components/WhatsAppButton';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'; // Se você usar, se não, pode remover
 import Icon from '../components/Icon';
-import CircuitBackground from '../components/CircuitBackground';
+import HeroSection from '../components/HeroSection'; // <--- Importação do novo componente
 
-// Importando as imagens
+// Importando as imagens restantes
 import iphoneImg from '../assets/iphone.png';
 import macbookImg from '../assets/macbook.png';
-import SolvLogo from '../assets/solv.png'; // <--- IMPORTADO O LOGO
+import SolvLogo from '../assets/solv.png'; // Mantido para o Footer CTA
 
 const Home = () => {
   // Estado para o formulário de orçamento
@@ -112,7 +112,7 @@ const Home = () => {
         </div>
       )}
 
-      {/* ESTILOS DE ANIMAÇÃO LOCAIS */}
+      {/* ESTILOS DE ANIMAÇÃO LOCAIS (Mantidos para a seção de Imagens) */}
       <style>{`
         @keyframes float-slow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         @keyframes float-medium { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
@@ -120,90 +120,8 @@ const Home = () => {
         .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
       `}</style>
 
-      {/* ================= HERO SECTION ================= */}
-      <section className="relative text-white py-24 lg:py-32 px-4 overflow-hidden bg-[#001F3F]">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#001F3F] via-[#0A1D37] to-[#001021] opacity-95"></div>
-          <CircuitBackground />
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
-
-          {/* LOGO 1: MARCA D'ÁGUA NO FUNDO */}
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-auto opacity-[0.03] pointer-events-none select-none -ml-20">
-            <img src={SolvLogo} alt="" className="w-full grayscale brightness-200" />
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16">
-          {/* Texto Principal */}
-          <div className="flex-1 text-center lg:text-left space-y-8">
-
-            <div className="inline-flex flex-col sm:flex-row items-center gap-2 bg-white/5 border border-white/10 text-[#00BFFF] text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider backdrop-blur-md shadow-lg">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BFFF] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00D4FF]"></span>
-                </span>
-                SOLVPLACE Delivery
-              </div>
-              <span className="hidden sm:block text-slate-500">|</span>
-              <span className="text-[#00BFFF]">Frete Grátis (Consulte condições)</span>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
-              Na hora do problema, <br /> escolha quem
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00BFFF] to-[#00D4FF] drop-shadow-lg">
-                cuida de verdade.
-              </span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-slate-200 font-medium max-w-2xl mx-auto lg:mx-0 border-l-4 border-[#00BFFF] pl-4">
-              SOLVPLACE — Confiança que resolve. <br />
-              <span className="text-slate-400 font-light">Qualidade que permanece.</span>
-            </p>
-
-            <p className="text-base text-slate-300 max-w-lg mx-auto lg:mx-0 pt-2">
-              A <strong>SOLVPLACE</strong> busca, conserta e devolve seu eletrônico. Sem trânsito, sem filas e com garantia de quem entende do assunto.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
-              <a href="#orcamento-form" className="group bg-[#00BFFF] hover:bg-[#00D4FF] text-[#001F3F] font-bold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(0,191,255,0.3)] transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3 text-lg">
-                <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />} />
-                <span>Orçamento Rápido</span>
-              </a>
-
-              <button
-                onClick={handleShare}
-                className="group bg-transparent hover:bg-[#00BFFF]/10 text-white border border-[#00BFFF]/50 font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 backdrop-blur-sm"
-              >
-                <Icon path={<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13" />} />
-                <span>Compartilhar</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Cards Flutuantes (Direita) */}
-          <div className="flex-1 relative w-full max-w-lg lg:max-w-none hidden md:block">
-            <div className="relative z-10 grid grid-cols-2 gap-4 lg:gap-6">
-              {[
-                { title: "Apple Expert", sub: "iPhone e Mac", icon: <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z M10 2c1 .5 2 2 2 5" />, color: "text-white" },
-                { title: "Android", sub: "Samsung e outros", icon: <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 20V4h10v16H7z" />, color: "text-[#00BFFF]" },
-                { title: "Consoles", sub: "Games e Controles", icon: <path d="M6 12h2v3a3 3 0 0 0 6 0v-3h2M6 12a6 6 0 0 1 12 0M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />, color: "text-purple-300" },
-                { title: "Notebooks", sub: "Todas as marcas", icon: <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" />, color: "text-[#00BFFF]" },
-              ].map((card, idx) => (
-                <div key={idx} className={`bg-[#0A1D37]/50 backdrop-blur-xl border border-[#00BFFF]/20 p-6 rounded-2xl shadow-2xl flex flex-col justify-between h-40 transform transition hover:scale-105 hover:bg-[#001F3F] ${idx % 2 !== 0 ? 'translate-y-8' : ''}`}>
-                  <div className={`p-3 bg-gradient-to-br from-[#00BFFF]/20 to-transparent w-fit rounded-lg ${card.color}`}>
-                    <Icon path={card.icon} className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-lg">{card.title}</h3>
-                    <p className="text-[#889dbf] text-xs mt-1">{card.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ================= HERO SECTION (IMPORTADA) ================= */}
+      <HeroSection onShare={handleShare} />
 
       {/* ================= FEATURES BAR ================= */}
       <section className="relative z-20 px-4 -mt-10 mb-20">
@@ -438,7 +356,6 @@ const Home = () => {
         </div>
       </section>
 
-      <Footer />
       <WhatsAppButton />
     </div>
   );

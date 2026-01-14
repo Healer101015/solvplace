@@ -156,7 +156,7 @@ const Home = () => {
 
               {/* LOGO 2: FLUTUANDO JUNTO COM AS IMAGENS */}
               <div className="absolute -top-10 right-10 w-20 h-20 z-0 animate-float-slow" style={{ animationDelay: '2.5s' }}>
-                <img src={SolvLogo} alt="Solv Logo" className="w-full h-full object-contain opacity-80 drop-shadow-[0_0_15px_rgba(0,191,255,0.4)]" />
+
               </div>
 
               <div className="relative z-10 animate-float-slow">
@@ -356,7 +356,7 @@ const Home = () => {
         </div>
       </section>
 
-      <WhatsAppButton />
+
     </div>
   );
 };

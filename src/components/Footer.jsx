@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import React from 'react';
 import Icon from './Icon'; // Importando o ícone reutilizável
+import solvBLogo from '../assets/solvB.png'; // Importando o logo
 
 const Footer = () => {
   return (
@@ -8,7 +9,13 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 text-sm">
 
         <div className="col-span-1 md:col-span-1">
-          <h2 className="text-2xl font-bold text-white mb-4 tracking-tighter">SOLVPLACE</h2>
+          {/* Logo substituindo o texto */}
+          <img
+            src={solvBLogo}
+            alt="Solvplace"
+            className="h-8 md:h-10 w-auto object-contain mb-4"
+          />
+
           <p className="leading-relaxed mb-6">
             Sua parceira de confiança para assistência técnica delivery. Rapidez, honestidade e qualidade.
           </p>

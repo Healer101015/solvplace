@@ -29,10 +29,7 @@ const Navbar = () => {
                 className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
 
-              {/* NOME DA EMPRESA */}
-              <span className="font-extrabold text-2xl tracking-tighter text-slate-900 group-hover:text-blue-600 transition-colors">
-                SOLVPLACE
-              </span>
+
             </Link>
           </div>
 

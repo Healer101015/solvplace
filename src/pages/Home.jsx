@@ -8,6 +8,7 @@ import CircuitBackground from '../components/CircuitBackground';
 // Importando as imagens
 import iphoneImg from '../assets/iphone.png';
 import macbookImg from '../assets/macbook.png';
+import SolvLogo from '../assets/solv.png'; // <--- IMPORTADO O LOGO
 
 const Home = () => {
   // Estado para o formulário de orçamento
@@ -120,12 +121,16 @@ const Home = () => {
       `}</style>
 
       {/* ================= HERO SECTION ================= */}
-      {/* Mantida igual, pois já era a referência de estilo */}
       <section className="relative text-white py-24 lg:py-32 px-4 overflow-hidden bg-[#001F3F]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#001F3F] via-[#0A1D37] to-[#001021] opacity-95"></div>
           <CircuitBackground />
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
+
+          {/* LOGO 1: MARCA D'ÁGUA NO FUNDO */}
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-auto opacity-[0.03] pointer-events-none select-none -ml-20">
+            <img src={SolvLogo} alt="" className="w-full grayscale brightness-200" />
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16">
@@ -202,7 +207,6 @@ const Home = () => {
 
       {/* ================= FEATURES BAR ================= */}
       <section className="relative z-20 px-4 -mt-10 mb-20">
-        {/* Transformado em Dark Card */}
         <div className="max-w-5xl mx-auto bg-[#0A1D37] rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-[#00BFFF]/20 p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 backdrop-blur-md">
           {[
             { title: "Garantia de 90 Dias", desc: "Qualidade assegurada.", icon: <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /> },
@@ -231,6 +235,12 @@ const Home = () => {
             {/* Glow de fundo reforçado */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[#001F3F]/50 to-[#00BFFF]/10 rounded-full blur-3xl -z-10"></div>
             <div className="relative w-full max-w-[550px]">
+
+              {/* LOGO 2: FLUTUANDO JUNTO COM AS IMAGENS */}
+              <div className="absolute -top-10 right-10 w-20 h-20 z-0 animate-float-slow" style={{ animationDelay: '2.5s' }}>
+                <img src={SolvLogo} alt="Solv Logo" className="w-full h-full object-contain opacity-80 drop-shadow-[0_0_15px_rgba(0,191,255,0.4)]" />
+              </div>
+
               <div className="relative z-10 animate-float-slow">
                 <img src={macbookImg} alt="MacBook Reparo" className="w-full h-auto drop-shadow-2xl" />
               </div>
@@ -344,9 +354,7 @@ const Home = () => {
 
       {/* ================= FORMULÁRIO DE ORÇAMENTO ================= */}
       <section id="orcamento-form" className="py-20 px-4 relative">
-        {/* Card do Formulário Dark */}
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#0A1D37] to-[#001F3F] border border-[#00BFFF]/20 shadow-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden">
-          {/* Efeito Glow atrás do form */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#00BFFF]/5 blur-3xl rounded-full -z-10"></div>
 
           <div className="text-center mb-10">
@@ -356,7 +364,6 @@ const Home = () => {
 
           <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Nome */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-[#00BFFF]">Seu Nome</label>
                 <input
@@ -370,7 +377,6 @@ const Home = () => {
                 />
               </div>
 
-              {/* Aparelho */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-[#00BFFF]">Aparelho / Modelo</label>
                 <input
@@ -385,7 +391,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Problema */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-[#00BFFF]">O que está acontecendo?</label>
               <textarea
@@ -399,7 +404,6 @@ const Home = () => {
               ></textarea>
             </div>
 
-            {/* Botão Enviar (Cyan com Hover) */}
             <button
               type="submit"
               className="w-full py-4 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#001F3F] font-bold rounded-xl shadow-lg shadow-[#00BFFF]/20 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 text-lg"
@@ -415,10 +419,15 @@ const Home = () => {
       {/* ================= CALL TO ACTION (Footer CTA) ================= */}
       <section className="py-20 px-4 bg-[#0A1D37] relative overflow-hidden border-t border-[#00BFFF]/10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        {/* Glow em Cyan no fundo */}
         <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-[#00BFFF] opacity-5 blur-[100px]"></div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
+
+          {/* LOGO 3: CENTRALIZADO NO FINAL */}
+          <div className="flex justify-center mb-8">
+            <img src={SolvLogo} alt="Solvplace" className="h-16 w-auto object-contain opacity-90 drop-shadow-[0_0_10px_rgba(0,191,255,0.3)]" />
+          </div>
+
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight">
             SOLVPLACE — Confiança que resolve.<br />
             <span className="text-[#00BFFF]">Qualidade que permanece.</span>
@@ -429,7 +438,7 @@ const Home = () => {
         </div>
       </section>
 
-
+      <Footer />
       <WhatsAppButton />
     </div>
   );
